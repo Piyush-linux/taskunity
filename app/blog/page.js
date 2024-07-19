@@ -1,15 +1,21 @@
+"use client"
 import BlogCard from "@/components/blog";
+import { fetcher } from "@/lib/utils";
+import useSWR from 'swr'
 
-export const metadata = {
-  title: "Blog Page",
-  description: "Blog description",
-};
+// export const metadata = {
+//   title: "Blog Page",
+//   description: "Blog description",
+// };
 
-export default async function Blog() {
 
+
+export default function Blog() {
+
+    // const fetcher = (...args) => fetch(...args).then(res => res.json())    
     // Fetch Blogs
-    const staticData = await fetch(`/api/blogs`, { cache: 'force-cache' })
-
+    const { data, error, isLoading } = useSWR("/api/blog", fetcher)
+    console.log(data);
   return (
     <div>
       
@@ -88,11 +94,14 @@ export default async function Blog() {
           </div>
           {/* /Heading */}
           <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-2 xl:grid-cols-2 xl:gap-16">
-            <BlogCard/>
-            <BlogCard/>
-            <BlogCard/>
-            <BlogCard/>
-            
+
+          {
+            !isLoading && data.map((itm,index)=>{
+              return(
+                <BlogCard key={index} title={itm.title} desc={itm.desc} cover={itm.cover} />
+              )
+            })
+          }
           </div>
         </div>
       </aside>
