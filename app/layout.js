@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import './globals.css'
 import { Inter as FontSans } from "next/font/google";
 import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
 
 export const metadata = {
   title: 'Create Next App',
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
       <html lang="en" className="m-0 p-0 box-border">
         <body className={`${fontSans.variable} w-full min-h-screen`}>
           {/* Navbar */}
-
+          <Navbar />
           {/* Content */}
           {children}
           
