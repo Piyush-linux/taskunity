@@ -22,12 +22,15 @@ npm run dev
 - [x] Setup: next, tailwind, shadcn/ui, lucid-react-icon
 - [x] UI Pages : @sitemap , ColorScheme & Logo
 - [x] CRUD: NextSJ with MongoDB
-- [ ] Featching /API: Render Blogs from MongoDB
-- [ ] Auth: clerk
+- [x] Featching /API: Render Blogs from MongoDB with SWR
+- [ ] Auth: clerk (Profile, Custom Lofin, Custom Signup, Custom Forget Password, public route: /blog /sign-up /sign-in / )
+- [ ] NextJS Nested Layout.jsx
+
 
 # QnA
 1. Clerk Role Assign meta Data : role-( Admin / User ) 
 2. How to use clerk with cli or Postman for Auth
+3. what is `(auth)` dir
 - Implementing Role-Based Access Control in Next.js , Safeguarding User Role-Based Private Routes in Next.js 13 or 14 app router: A Step-by-Step Guide
 - Difference betwwen `.env` / `.env.local` / `.env.example`
 - Customization Clerk UI : Auth , Profile
