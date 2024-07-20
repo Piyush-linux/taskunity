@@ -1,5 +1,7 @@
 "use client"
 import BlogCard from "@/components/blog";
+import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
 import { fetcher } from "@/lib/utils";
 import useSWR from 'swr'
 
@@ -18,7 +20,7 @@ export default function Blog() {
     console.log(data);
   return (
     <div>
-      
+      <Navbar/>
       <main>
         <article>
           <header className="mx-auto mt-20 max-w-screen-lg rounded-t-lg bg-white pt-16 text-center shadow-lg">
@@ -105,6 +107,7 @@ export default function Blog() {
           </div>
         </div>
       </aside>
+      <Footer/>
     </div>
   );
 }

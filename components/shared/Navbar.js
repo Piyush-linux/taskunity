@@ -7,10 +7,10 @@ export default function Navbar() {
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <div className="md:flex md:items-center md:gap-12">
-                            <a className="flex justify-center items-center space-x-3" href="#">
+                            <Link className="flex justify-center items-center space-x-3" href="/">
                                 <img src="/logo.png" className='w-10 h-10' />
                                 <span className='text-rose-400 font-extrabold text-xl'>Taskunity</span>
-                            </a>
+                            </Link>
                         </div>
 
                         {/* <div className="hidden md:block">

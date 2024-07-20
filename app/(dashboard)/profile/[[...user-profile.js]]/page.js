@@ -16,8 +16,8 @@ const ProfilePage = () => {
   
   return (
     <>
-      <UserProfile />
-      {/* {user} */}
+      {/* <UserProfile /> */}
+      {/* { user.id } */}
     </>
   );
 };
