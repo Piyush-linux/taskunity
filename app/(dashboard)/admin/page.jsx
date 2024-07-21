@@ -2,6 +2,7 @@
 import Navbar from '@/components/admin/Navbar';
 import { useUser } from "@clerk/nextjs";
 import { useState } from 'react';
+import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 
 // export const metadata = {
 //     title: 'Create Next App',
@@ -10,10 +11,20 @@ import { useState } from 'react';
 
 export default function Admin() {
 
+
+    // const {  isLoaded: orgLoaded } = useOrganization();
+    
+
     const { isLoaded, user } = useUser();
-    let [modal, setModal] = useState('hidden')
+    let [modal, setModal] = useState('hidden');
     if (!isLoaded) return;
-    console.log(user)
+    // console.log(user);
+
+    // if(!orgLoaded) return;
+    let OrgName = user.organizationMemberships[0].organization.name
+    let OrgId = user.organizationMemberships[0].organization.id
+    // const data = useOrganizationList({organizationId:OrgId}).then((e)=>e.json());
+    console.log(data);  
 
     let openModal = (status) => {
         (status) ? setModal("block") : setModal("hidden")

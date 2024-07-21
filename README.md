@@ -25,6 +25,7 @@ npm run dev
 - [x] Featching /API: Render Blogs from MongoDB with SWR
 - [ ] Auth: clerk (Custom Login, Custom Signup, Custom Forget Password, public route: /blog /sign-up /sign-in / )
 - [x] OnBoard : update User Meatadata : role, username
+- [ ] NextSJ Server Actions
 - [ ] NextJS Nested Layout.jsx
 - [ ] if alreday authentixated then dont allow "/sign-in  /sign-up"
 - [ ] user data in zudstand
