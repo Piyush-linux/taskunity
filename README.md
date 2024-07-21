@@ -23,11 +23,13 @@ npm run dev
 - [x] UI Pages : @sitemap , ColorScheme & Logo
 - [x] CRUD: NextSJ with MongoDB
 - [x] Featching /API: Render Blogs from MongoDB with SWR
-- [ ] Auth: clerk (Profile, Custom Lofin, Custom Signup, Custom Forget Password, public route: /blog /sign-up /sign-in / )
+- [ ] Auth: clerk (Custom Login, Custom Signup, Custom Forget Password, public route: /blog /sign-up /sign-in / )
+- [x] OnBoard : update User Meatadata : role, username
 - [ ] NextJS Nested Layout.jsx
 - [ ] if alreday authentixated then dont allow "/sign-in  /sign-up"
 - [ ] user data in zudstand
 - [ ] routing of auth , redirect , loader animation of clerk, Layout, Clerk metadata
+ 
 
 # QnA
 1. Clerk Role Assign meta Data : role-( Admin / User ) 
@@ -80,6 +82,9 @@ http
 
 
 ### Resources
-- https://github.com/ajayahara/nextjs-14-blog/blob/master/src/app/about/page.tsx
+- https://github.com/ajayahara/nextjs-14-blog
+- https://github.com/safak/next14-tutorial
+- https://github.com/clerk/clerk-nextjs-examples
 - https://dev.to/musebe/implementing-role-based-access-control-in-nextjs-app-router-using-clerk-organizations-566g
 - https://github.com/bradtraversy/clerk-app/
+- https://clerk.com/docs/references/nextjs/overview#client-side-helpers

@@ -30,7 +30,7 @@ const SignInPage = () => {
 
       if (signInAttempt.status === 'complete') {
         await setActive({ session: signInAttempt.createdSessionId });
-        router.push('/admin');
+        router.push('/onboard');
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.
