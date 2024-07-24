@@ -7,6 +7,7 @@ export default function Navbar() {
 
     const { isLoaded, user } = useUser();
     if (!isLoaded) return null ;
+    // console.log(user)
     let [modal, setModal] = useState('hidden');
     let openModal = (status) => {
         (status) ? setModal("block") : setModal("hidden")
