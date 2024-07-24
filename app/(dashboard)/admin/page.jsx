@@ -1,8 +1,9 @@
-"use client"
+// "use client"
 import Navbar from '@/components/admin/Navbar';
-import { useUser } from "@clerk/nextjs";
-import { useState } from 'react';
-import { useOrganization, useOrganizationList } from "@clerk/nextjs";
+
+// import { useOrganization, useOrganizationList } from "@clerk/nextjs";
+import { ClerkLoading, OrganizationProfile } from "@clerk/nextjs"
+// import { Organization } from '@/components/admin/Organization';
 
 // export const metadata = {
 //     title: 'Create Next App',
@@ -15,21 +16,18 @@ export default function Admin() {
     // const {  isLoaded: orgLoaded } = useOrganization();
     
 
-    const { isLoaded, user } = useUser();
-    let [modal, setModal] = useState('hidden');
-    if (!isLoaded) return;
+    
+    
+    // if (!isLoaded) return;
     // console.log(user);
 
     // if(!orgLoaded) return;
-    let OrgName = user.organizationMemberships[0].organization.name
-    let OrgId = user.organizationMemberships[0].organization.id
+    // let OrgName = user.organizationMemberships[0].organization.name
+    // let OrgId = user.organizationMemberships[0].organization.id
     // const data = useOrganizationList({organizationId:OrgId}).then((e)=>e.json());
-    console.log(data);  
+    // console.log(data);  
 
-    let openModal = (status) => {
-        (status) ? setModal("block") : setModal("hidden")
-
-    }
+    
 
 
 
@@ -37,7 +35,7 @@ export default function Admin() {
     return (
         <div>
             {/* Navbar */}
-            <Navbar username={user.publicMetadata.username} openModal={openModal} />
+            <Navbar />
             {/* Tasks */}
 
             <div className=''>
@@ -45,7 +43,7 @@ export default function Admin() {
                     <div className="mx-auto mt-8 max-w-screen-lg px-2">
                         <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
                             <p className="flex-1 text-base font-bold text-gray-900">
-                                T A S K S {user.id}
+                                T A S K S
 
                             </p>
                             <div className="mt-4 sm:mt-0">
@@ -243,44 +241,9 @@ export default function Admin() {
                 </div>
             </div>
 
-            {/* Dialog */}
-            <div
-                id="modelConfirm"
-                className={`${modal} fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 `}
-            >
-                <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-4xl">
-                    <div className="flex justify-end p-2">
-                        <button
-                            onClick={() => openModal(false)}
-                            type="button"
-                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                        >
-                            <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                    <div className="p-6 pt-0 text-center">
-                        
-                        <h3 className="flex mt-5 mb-6 space-x-3">
+            {/* <Organization/> */}
 
-                            <input type="text" className="w-full border-2 p-3 rounded-lg" placeholder='task' />
-                            <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='user@gmail.com' />
-                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg'>send</button>
-
-                        </h3>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     );

@@ -89,3 +89,7 @@ http
 - https://dev.to/musebe/implementing-role-based-access-control-in-nextjs-app-router-using-clerk-organizations-566g
 - https://github.com/bradtraversy/clerk-app/
 - https://clerk.com/docs/references/nextjs/overview#client-side-helpers
+
+## Learning
+- `use client` under /Compoenent
+- `use server` under /app 

@@ -1,6 +1,21 @@
+"use client"
 import Link from 'next/link'
+import { useUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export default function Navbar() {
+  
+    const { isLoaded, user, isSignedIn } = useUser();
+  if(!isLoaded) {return};
+  // console.log(isSignedIn)
+  if(isSignedIn){
+    if (user.publicMetadata.role == 'admin') {
+      redirect(`/admin`)
+    }else if(user.publicMetadata.role == 'user'){
+      redirect(`/user`)
+    }
+  }
+
     return (
         <>
             <header className="bg-white">
