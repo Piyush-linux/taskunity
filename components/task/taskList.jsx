@@ -5,7 +5,7 @@ import useTaskStore from "@/store/useTaskStore";
 
 export default function TaskList() {
     const tasks = useTaskStore((state)=>state.tasks);
-    console.log(tasks)
+    // console.log(tasks)
     return (
         <>
             <div className="mt-6 overflow-hidden rounded-xl border shadow">

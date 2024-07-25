@@ -3,12 +3,21 @@
 import { useModalStore } from "@/store/useModalStore";
 import useTaskStore from "@/store/useTaskStore";
 import { useState } from "react";
+// import { useOrganization } from "@clerk/nextjs";
+import useUserStore from "@/store/useUserStore";
+
 
 export default function TaskAdd() {
+
     const { modal, update } = useModalStore();
-    let [task,setTask] = useState('');
     const { addTask } = useTaskStore(); 
-    let date = new Date
+    const { users, setUser, fetchUser } = useUserStore();
+
+    let [task,setTask] = useState('');
+    
+    // let  {isLoaded, organization } = useOrganization()
+    // if(!isLoaded) return null ;
+
     let handleAddTask = ()=>{
         addTask({
             id: Date.now(),
@@ -16,7 +25,23 @@ export default function TaskAdd() {
             status: false 
         })
         update('hidden')
+        fetchUser();
     }
+
+    // let getMem = async ()=>{
+    //     let { data } = await organization.getMemberships()
+    //     data.map((itm)=>{
+    //         setUser({
+    //             orgId: itm.id ,
+    //             useId: itm.publicUserData.userId ,
+    //             role: itm.role ,
+    //             mail: itm.publicUserData.identifier
+    //         })
+
+    //     })
+    //     console.log(users)
+    // }
+    // getMem()
     
     return(
         <>
@@ -44,6 +69,8 @@ export default function TaskAdd() {
                                 />
                             </svg>
                         </button>
+                        {/* <button className="p-3 bg-cyan-300 text-white font-bold" onClick={()=>fetchUser()}>fetch</button> */}
+
                     </div>
                     <div className="p-6 pt-0 text-center">
                         
