@@ -1,3 +1,9 @@
+/*
+FORM: username, role
+ROLE:
+    admin > Organization Name
+    user > redirect to /user/profile
+*/ 
 "use client"
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";

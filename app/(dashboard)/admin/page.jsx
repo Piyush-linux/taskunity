@@ -224,9 +224,6 @@ export default function Admin() {
             </div>
             <hr />
             <OrganizationTab />
-
-
-
         </div>
     );
 }

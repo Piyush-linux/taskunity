@@ -1,19 +1,33 @@
 "use client"
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useOrganizationList} from "@clerk/nextjs"
+import { useModalStore } from "@/store/useModalStore";
 
 export default function Navbar() {
 
+    const { modal, update } = useModalStore();
+    const { isLoaded:orgLoaded,userMemberships  } = useOrganizationList({
+        userMemberships: {
+          infinite: true,
+        },
+      });
+    
     const { isLoaded, user } = useUser();
-    if (!isLoaded) return null ;
-    // console.log(user)
-    let [modal, setModal] = useState('hidden');
+
+    if (!isLoaded || !orgLoaded) return null ;
+
     let openModal = (status) => {
-        (status) ? setModal("block") : setModal("hidden")
-
+        console.log("modal: ",status);
+        if(status){
+            update("block")
+        }else{
+            update("hidden")
+        }
     }
-
+     
+// {userMemberships.data?.organization.name}
     return(
         <>
         {/* Navbar */}
@@ -21,7 +35,7 @@ export default function Navbar() {
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                     <div className="sm:flex sm:items-center sm:justify-between">
                         <div className="text-center sm:text-left">
-                            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, {user.publicMetadata.username}!</h1>
+                            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, {modal} !</h1>
 
                             <p className="mt-1.5 text-sm text-gray-500">Let's Create a new Task ! 🎉</p>
                         </div>
