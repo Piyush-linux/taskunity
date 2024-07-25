@@ -1,16 +1,9 @@
 import { create } from "zustand";
-import { useOrganizationList } from "@clerk/nextjs"
 
-// const { userMemberships } = useOrganizationList({
-//     userMemberships: {
-//       infinite: true,
-//     },
-//   })
-
-export const useUserStore = create((set) => ({
-    user: null,
-    getUserInfo: (user) => {
-        // let { data } = await userMemberships.data[0].organization.getMemberships();
-        set(() => ({ user: user  }))
-    },
+const useUserStore = create((set) => ({
+    id: "1",
+    name: "kiki",
+    setUser: () => set((state) => ({name: state.name})),
 }));
+
+export default useUserStore;

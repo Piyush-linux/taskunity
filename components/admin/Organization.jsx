@@ -1,42 +1,32 @@
- "use client"
-// import { useUserStore } from "@/store/useUserStore";
-/*
-Profile:
-username
-org : id, name, role,
-*/
+"use client"
+
 import { useOrganizationList } from "@clerk/nextjs"
 import { useState } from "react";
-
+import useUserStore from "@/store/useUserStore.js";
 
 export default function OrganizationTab() {
-  // const { user, getUserInfo } = useUserStore;
+
+  const { name , setUser} = useUserStore();
+  
   const { isLoaded, userMemberships } = useOrganizationList({
     userMemberships: {
       infinite: true,
     },
   })
 
-  let [org,setOrg] = useState('');
-
   if (!isLoaded) return <h1>Loading...</h1>;
-  let abc = userMemberships.data[0]?.organization.name;
-  // if(abc){
-  //   setOrg(abc)
-  // }
-  // if(isLoaded){
-  //   setOrg({
-  //     name: userMemberships.data[0].role,
-  //     role:"",
-  //     members:[""]
-  //   })
-  // }
 
-  // let getUser = () => {
+  let getMem = () => {
+    // let { data } = await userMemberships.data[0]?.organization.getMemberships()
+    // let name = userMemberships.data[0]?.organization.name ;
+    // let id = userMemberships.data[0]?.organization.id ;
+    setUser('samsam');
+    // console.log(user) 
+  }
 
-  // }
+  getMem();
 
-  
+
   // console.log(userMemberships.data[0])
   // console.log(userMemberships.data[0])
   // console.log(userMemberships.data[0])
@@ -44,7 +34,8 @@ export default function OrganizationTab() {
 
   return (
     <>
-      <span> Org Name : {abc} </span>
+      <span> Org Name :  { name } </span>
+      <br />
       <span> Org Role : {userMemberships.data[0]?.role} </span>
       {/* <ul>
         {userMemberships.data?.map((mem) => (
