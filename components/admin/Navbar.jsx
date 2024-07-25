@@ -2,21 +2,13 @@
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { useOrganizationList} from "@clerk/nextjs"
 import { useModalStore } from "@/store/useModalStore";
 
 export default function Navbar() {
 
     const { modal, update } = useModalStore();
-    const { isLoaded:orgLoaded,userMemberships  } = useOrganizationList({
-        userMemberships: {
-          infinite: true,
-        },
-      });
-    
     const { isLoaded, user } = useUser();
-
-    if (!isLoaded || !orgLoaded) return null ;
+    if (!isLoaded ) return null ;
 
     let openModal = (status) => {
         console.log("modal: ",status);

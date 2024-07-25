@@ -2,7 +2,6 @@
 
 import { auth } from '@clerk/nextjs/server'
 import Navbar from '@/components/admin/Navbar';
-
 import OrganizationTab from '@/components/admin/Organization';
 
 export const metadata = {
@@ -11,8 +10,8 @@ export const metadata = {
 }
 
 export default function Admin() {
-    const { orgId } = auth();
-    console.log("Org ID : ",orgId)
+    // const { orgId } = auth();
+    // console.log("Org ID : ",orgId)
 
     return (
         <div>
