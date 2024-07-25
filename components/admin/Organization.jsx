@@ -16,15 +16,15 @@ export default function OrganizationTab() {
 
   if (!isLoaded) return <h1>Loading...</h1>;
 
-  let getMem = () => {
+  // let getMem = () => {
     // let { data } = await userMemberships.data[0]?.organization.getMemberships()
     // let name = userMemberships.data[0]?.organization.name ;
     // let id = userMemberships.data[0]?.organization.id ;
-    setUser('samsam');
+    // setUser('samsam');
     // console.log(user) 
-  }
+  // }
 
-  getMem();
+  // getMem();
 
 
   // console.log(userMemberships.data[0])
