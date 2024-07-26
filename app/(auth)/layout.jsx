@@ -7,8 +7,6 @@ export const metadata = {
 
 
 export default function Layout({ children }) {
-    const year = new Date().getFullYear();
-
     return (
         <section>
             {children}

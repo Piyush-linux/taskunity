@@ -21,16 +21,18 @@ npm run dev
 
 - [x] Setup: next, tailwind, shadcn/ui, lucid-react-icon
 - [x] UI Pages : @sitemap , ColorScheme & Logo
-- [x] CRUD: NextSJ with MongoDB
+- [ ] CRUD 
+    - [x] NextSJ with MongoDB using mongoose
+    - [ ] Task CRUD
 - [x] Featching /API: Render Blogs from MongoDB with SWR
 - [ ] Auth: clerk (Custom Login, Custom Signup, Custom Forget Password, public route: /blog /sign-up /sign-in / )
 - [x] OnBoard : update User Meatadata : role, username
 - [ ] NextSJ Server Actions
 - [ ] NextJS Nested Layout.jsx
-- [ ] if alreday authentixated then dont allow "/sign-in  /sign-up"
+- [x] if alreday authentixated then dont allow "/sign-in  /sign-up"
 - [ ] user data in zudstand
 - [ ] routing of auth , redirect , loader animation of clerk, Layout, Clerk metadata
- 
+- [x] [Loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) 
 
 # QnA
 1. Clerk Role Assign meta Data : role-( Admin / User ) 
@@ -57,17 +59,23 @@ npm run dev
 
 ## Schema
 
-```prisma
+
+```yml
 Admin
     - id @id
-    - tasks @relation( Task[] )
+    - username
+    - email
+    - 
+    - tasks @relation Task_id
 
 User
     - id @id
-    - tasks @relation( Task[] )
+    - org @relation Org_id
+
+    - tasks @relation Task[] )
 
 Task
-    - title String
+    - todo String
     - status @enum("pending","done")
     - createdAt
     - assigned @relation("UserID")
@@ -89,6 +97,7 @@ http
 - https://dev.to/musebe/implementing-role-based-access-control-in-nextjs-app-router-using-clerk-organizations-566g
 - https://github.com/bradtraversy/clerk-app/
 - https://clerk.com/docs/references/nextjs/overview#client-side-helpers
+- https://github.com/Shreyas-29/nextjs-clerk-auth-starter/
 
 ## Learning
 - `use client` under /Compoenent

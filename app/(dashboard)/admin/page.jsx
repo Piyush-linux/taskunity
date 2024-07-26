@@ -1,5 +1,3 @@
-// "use client"
-
 // import { auth } from '@clerk/nextjs/server'
 import Navbar from '@/components/admin/Navbar';
 import Task from '@/components/task';
