@@ -30,9 +30,18 @@ npm run dev
 - [ ] NextSJ Server Actions
 - [ ] NextJS Nested Layout.jsx
 - [x] if alreday authentixated then dont allow "/sign-in  /sign-up"
-- [ ] user data in zudstand
+- [ ] Zustand
+    - [x] Add Task Modal Popup State
+    - [x] Task State
+    - [ ] User Info ( Admin / User )
 - [ ] routing of auth , redirect , loader animation of clerk, Layout, Clerk metadata
 - [x] [Loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) 
+- [ ] React/NextConcepts
+    - [ ] Context API
+    - [ ] memo
+    - [ ] hooks
+- [ ] React-Query
+    - [ ] Sample PJ
 
 # QnA
 1. Clerk Role Assign meta Data : role-( Admin / User ) 
@@ -98,6 +107,7 @@ http
 - https://github.com/bradtraversy/clerk-app/
 - https://clerk.com/docs/references/nextjs/overview#client-side-helpers
 - https://github.com/Shreyas-29/nextjs-clerk-auth-starter/
+ - https://github.com/boybizarre/budget-tracker.git
 
 ## Learning
 - `use client` under /Compoenent
