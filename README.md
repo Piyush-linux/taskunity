@@ -111,6 +111,7 @@ http
 - https://clerk.com/docs/references/nextjs/overview#client-side-helpers
 - https://github.com/Shreyas-29/nextjs-clerk-auth-starter/
 - https://github.com/boybizarre/budget-tracker.git
+- https://github.com/DerikDantas/nextjs-todo.git
 
 ## Learning
 - `use client` under /Compoenent
