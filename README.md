@@ -18,7 +18,15 @@ npm run dev
 ```
 
 ## Techstack
-> NextJS, Tailwind CSS, Shad/cn, MongoDB.
+- **Next.js 14:** The React framework that provides an efficient and scalable development experience for modern web applications.
+
+- **Tailwind CSS:** A first-class utility-first CSS framework for web applications, simplifying styling with a class-based approach.
+
+- **Shad/cn:** A pre-built UI components designed to help developers quickly build user interfaces
+
+- **MongoDB:** A widely used NoSQL database for flexible and scalable data storage.
+
+- **Zustand:** A minimalist state management library for React, providing a straightforward way to manage application state.
  
 
 # Roadmap
