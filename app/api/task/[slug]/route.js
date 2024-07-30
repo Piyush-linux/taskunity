@@ -8,8 +8,8 @@ export async function GET(request, { params }) {
 
   try {
     connectToDb();
-    // const blog = await Post.findOne({ slug });
-    const task = await Task.findOne();
+    const task = await Task.findById(slug);
+    // const task = await Task.findOne();
     return NextResponse.json(task);
   } catch (err) {
     console.log(err);

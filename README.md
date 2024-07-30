@@ -36,10 +36,9 @@ npm run dev
     - [ ] User Info ( Admin / User )
 - [ ] routing of auth , redirect , loader animation of clerk, Layout, Clerk metadata
 - [x] [Loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) 
-- [ ] React/NextConcepts
-    - [ ] Context API
-    - [ ] memo
-    - [ ] hooks
+- [ ] React/NextConcepts : Context API, memo, hooks
+- [x] Task CRUD API 
+- [ ] Clerk Organization Invitation
 - [ ] React-Query
     - [ ] Sample PJ
 
@@ -107,7 +106,7 @@ http
 - https://github.com/bradtraversy/clerk-app/
 - https://clerk.com/docs/references/nextjs/overview#client-side-helpers
 - https://github.com/Shreyas-29/nextjs-clerk-auth-starter/
- - https://github.com/boybizarre/budget-tracker.git
+- https://github.com/boybizarre/budget-tracker.git
 
 ## Learning
 - `use client` under /Compoenent

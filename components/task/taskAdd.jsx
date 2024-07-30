@@ -78,7 +78,7 @@ export default function TaskAdd() {
 
                             <input type="text" className="w-full border-2 p-3 rounded-lg" placeholder='task' onChange={(e)=>setTask(e.target.value)} value={task} />
                             <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='user@gmail.com' />
-                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTask}>send : {task} </button>
+                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTask}>send</button>
 
                         </h3>
                     </div>

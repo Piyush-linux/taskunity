@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function GET (request) {
   try {
     connectToDb();
-
     const task = await Task.find();
     return NextResponse.json(task);
   } catch (err) {
@@ -21,7 +20,6 @@ export async function POST(request) {
   let data = await request.json()
   try {
     connectToDb();
-
     const task = await Task.create(data);
     return NextResponse.json(task);
   } catch (err) {

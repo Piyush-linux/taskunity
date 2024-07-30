@@ -28,7 +28,7 @@ export default async function Admin() {
             {/* Navbar */}
             <Navbar user={user.publicMetadata.username} />
             {/* Tasks */}
-            <Task/>
+            <Task  />
         </div>
     );
 }

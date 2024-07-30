@@ -1,5 +1,6 @@
 "use client"
 
+import Koko from '@/components/admin/koko';
 import { UserProfile, useUser } from '@clerk/nextjs';
 // import { currentUser } from '@clerk/nextjs/server';
 
@@ -18,6 +19,7 @@ const ProfilePage = () => {
     <>
       {/* <UserProfile /> */}
       {/* { user.id } */}
+      <Koko/>
     </>
   );
 };
