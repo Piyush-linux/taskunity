@@ -1,4 +1,4 @@
-# Taskunity
+# 🌸 Taskunity
 
 > Efficient Task Management for Your Team
 
@@ -16,6 +16,10 @@ npm i
 cp .example.env .env # add require ENV
 npm run dev
 ```
+
+## Techstack
+> NextJS, Tailwind CSS, Shad/cn, MongoDB.
+ 
 
 # Roadmap
 
