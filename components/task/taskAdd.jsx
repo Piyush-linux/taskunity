@@ -18,10 +18,10 @@ export default function TaskAdd() {
     
     // const { users, setUser, fetchUser } = useUserStore();
     let handleAddTodo = async () => {
-        console.log("handle form ...")
+        console.log("handle form ...");
         // console.log(`ID : ${userId}, Todo: ${todo}`)
         let data = await TodosService.addTodo({userId: userId, todo: todo, status: false});
-        console.log(data)
+        console.log(data);
         // await TodosService.addTodo({userId: '2323', todo: 'todo', status: false});
         // console.log(todo)
         update('hidden');

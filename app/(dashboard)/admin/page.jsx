@@ -21,12 +21,13 @@ export default async function Admin() {
     // const { orgId } = auth();
     // console.log("Org ID : ",orgId)
     const user = await currentUser();
+    // console.log(user ?? " ")
     // const data = Organization();
 
     return (
         <div>
             {/* Navbar */}
-            <Navbar user={user.publicMetadata.username} />
+            <Navbar user={user.publicMetadata.username || " "} />
             {/* Tasks */}
             <Task  />
         </div>

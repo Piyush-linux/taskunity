@@ -1,11 +1,17 @@
 "use client"
-import { SignOutButton } from "@clerk/nextjs";
+import { SignOutButton, useOrganization } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
 import { useModalStore } from "@/store/useModalStore";
 
 export default function Navbar(props) {
 
-    const { modal, update } = useModalStore();
+    const { update } = useModalStore();
+
+    // let gotoProfile = ()=>{
+
+    // }
+    // console.log(userMemberships.data[0].id) 
+    
     // const { isLoaded, user } = useUser();
 // {userMemberships.data?.organization.name}
     return(
@@ -14,7 +20,7 @@ export default function Navbar(props) {
             <header>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                     <div className="sm:flex sm:items-center sm:justify-between">
-                        <div className="text-center sm:text-left">
+                        <div className="text-center sm:text-left cursor-pointer">
                             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, {props.user} !</h1>
 
                             <p className="mt-1.5 text-sm text-gray-500">Let's Create a new Task ! 🎉</p>

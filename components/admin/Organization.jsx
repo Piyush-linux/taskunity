@@ -1,66 +1,82 @@
 "use client"
+import { useOrganization, useUser } from "@clerk/nextjs"
 
-import { useOrganizationList } from "@clerk/nextjs"
-import { useState } from "react";
-import useUserStore from "@/store/useUserStore.js";
+export const OrgMembers = () => {
 
-export default function OrganizationTab() {
-
-  const { name , setUser} = useUserStore();
-  
-  const { isLoaded, userMemberships } = useOrganizationList({
-    userMemberships: {
-      infinite: true,
+  const { user } = useUser();
+  const { isLoaded, memberships } = useOrganization({
+    memberships: {
+      pageSize: 5,
+      keepPreviousData: true,
     },
-  })
+  });
 
-  if (!isLoaded) return <h1>Loading...</h1>;
-
-  // let getMem = () => {
-    // let { data } = await userMemberships.data[0]?.organization.getMemberships()
-    // let name = userMemberships.data[0]?.organization.name ;
-    // let id = userMemberships.data[0]?.organization.id ;
-    // setUser('samsam');
-    // console.log(user) 
-  // }
-
-  // getMem();
-
-
-  // console.log(userMemberships.data[0])
-  // console.log(userMemberships.data[0])
-  // console.log(userMemberships.data[0])
-
+  if (!isLoaded) {
+    return <>Loading</>
+  }
 
   return (
     <>
-      <span> Org Name :  { name } </span>
-      <br />
-      <span> Org Role : {userMemberships.data[0]?.role} </span>
-      {/* <ul>
-        {userMemberships.data?.map((mem) => (
-          <li key={mem.id}>
-            <span>{mem.organization.name}</span>
-            <button
-             className="p-3 bg-rose-300 text-white font-extrabold"
-              onClick={() => setActive({ organization: mem.organization.id })}
-            >
-              Select
-            </button>
-          </li>
-        ))}
-      </ul> */}
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Joined</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {memberships?.data?.map((mem) => (
+            <tr key={mem.id}>
+              <td>
+                {mem.publicUserData.identifier}{" "}
+                {mem.publicUserData.userId === user?.id && "(You)"}
+              </td>
+              <td>{mem.createdAt.toLocaleDateString()}</td>
+              <td>
+                <SelectRole
+                  defaultRole={mem.role}
+                  onChange={async (e) => {
+                    await mem.update({
+                      role: e.target.value,
+                    })
+                    await memberships?.revalidate()
+                  }}
+                />
+              </td>
+              <td>
+                <button
+                  onClick={async () => {
+                    await mem.destroy()
+                    await memberships?.revalidate()
+                  }}
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      {/* <button
-        disabled={!userMemberships.hasNextPage}
-        onClick={() => userMemberships.fetchNext()}
-      >
-        Load more
-      </button> */}
-      {/* <OrganizationList
-      hidePersonal={true} /> */}
+      <div className="flex">
+        <button
+          className="inline-block"
+          disabled={!memberships?.hasPreviousPage || memberships?.isFetching}
+          onClick={() => memberships?.fetchPrevious?.()}
+        >
+          Previous
+        </button>
 
+        <button
+          className="inline-block"
+          disabled={!memberships?.hasNextPage || memberships?.isFetching}
+          onClick={() => memberships?.fetchNext?.()}
+        >
+          Next
+        </button>
+      </div>
     </>
   )
 }
-
