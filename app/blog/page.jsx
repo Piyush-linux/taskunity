@@ -4,7 +4,7 @@ import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { fetcher } from "@/lib/utils";
 import useSWR from 'swr'
-
+ 
 // export const metadata = {
 //   title: "Blog Page",
 //   description: "Blog description",

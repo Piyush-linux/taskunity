@@ -1,47 +1,33 @@
 "use client"
 
+import { TodosService } from "@/lib/services";
 import { useModalStore } from "@/store/useModalStore";
-import useTaskStore from "@/store/useTaskStore";
+// import useTaskStore from "@/store/useTaskStore";
 import { useState } from "react";
 // import { useOrganization } from "@clerk/nextjs";
-import useUserStore from "@/store/useUserStore";
+// import useUserStore from "@/store/useUserStore";
 
 
 export default function TaskAdd() {
-
+    // const {} = TodosService
     const { modal, update } = useModalStore();
-    const { addTask } = useTaskStore(); 
-    const { users, setUser, fetchUser } = useUserStore();
-
-    let [task,setTask] = useState('');
     
-    // let  {isLoaded, organization } = useOrganization()
-    // if(!isLoaded) return null ;
-
-    let handleAddTask = ()=>{
-        addTask({
-            id: Date.now(),
-            todo:task,
-            status: false 
-        })
-        update('hidden')
-        fetchUser();
+    // const { addTask } = useTaskStore(); 
+    const [todo,setTodo] = useState('');
+    const [userId,setUserId] = useState('');
+    
+    // const { users, setUser, fetchUser } = useUserStore();
+    let handleAddTodo = async () => {
+        console.log("handle form ...")
+        // console.log(`ID : ${userId}, Todo: ${todo}`)
+        let data = await TodosService.addTodo({userId: userId, todo: todo, status: false});
+        console.log(data)
+        // await TodosService.addTodo({userId: '2323', todo: 'todo', status: false});
+        // console.log(todo)
+        update('hidden');
+        setTodo('');
+        setUserId('');
     }
-
-    // let getMem = async ()=>{
-    //     let { data } = await organization.getMemberships()
-    //     data.map((itm)=>{
-    //         setUser({
-    //             orgId: itm.id ,
-    //             useId: itm.publicUserData.userId ,
-    //             role: itm.role ,
-    //             mail: itm.publicUserData.identifier
-    //         })
-
-    //     })
-    //     console.log(users)
-    // }
-    // getMem()
     
     return(
         <>
@@ -76,9 +62,15 @@ export default function TaskAdd() {
                         
                         <h3 className="flex mt-5 mb-6 space-x-3">
 
-                            <input type="text" className="w-full border-2 p-3 rounded-lg" placeholder='task' onChange={(e)=>setTask(e.target.value)} value={task} />
-                            <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='user@gmail.com' />
-                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTask}>send</button>
+                            <input type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 p-3" placeholder='task' onChange={(e)=>setTodo(e.target.value)} value={todo} />
+                            {/* <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='ID' onChange={(e)=>setUserId(e.target.value)} value={userId}  /> */}
+                            <select name="" id="" className="w-fit bg-white text-rose-400 p-3 rounded-lg" defaultValue="Select User">
+                                <option value="000">Select User</option>
+                                <option value="123">Eren</option>
+                                <option value="777">Mikasa</option>
+                                <option value="1313">Levi</option>
+                            </select>
+                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTodo}>send</button>
 
                         </h3>
                     </div>

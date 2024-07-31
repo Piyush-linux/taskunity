@@ -1,8 +1,7 @@
-[{
-  "_id": {
-    "$oid": "669a45b382ca9ec30682717e"
-  },
-  "title": "HTML",
-  "desc": "Hyper Text Transfer Markup Language",
-  "cover": "https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-}]
+[
+  {
+    "userId":"123" ,
+    "todo": "HTML" ,
+    "status": true
+  }
+]

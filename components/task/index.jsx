@@ -1,31 +1,31 @@
-"use client"
-import { useQuery } from "@tanstack/react-query";
+// "use client"
+// import { useQuery } from "@tanstack/react-query";
 import TaskAdd from "./taskAdd";
 import TaskList from "./taskList";
 // import { getMemebers } from '@/lib/actions';
-import { useOrganization } from "@clerk/nextjs";
-import Loader from "../ui/loader";
-import { useState } from "react";
+// import { useOrganization } from "@clerk/nextjs";
+// import Loader from "../ui/loader";
+// import { useState } from "react";
 // import {  } from 'react'
 
 
 export default function Task() {
 
 
-    let [members,setMembers] = useState();
-    const org = useOrganization();
+    // let [members,setMembers] = useState();
+    // const org = useOrganization();
 
-    const { isPending, error, data } = useQuery({
-        queryKey: ['repoData'],
-        queryFn: () =>
-            org.organization.getMemberships().then((res) =>
-              res,
-            ),
-    })
-    if(isPending) return <><Loader/></>;
-    data?.data.map((e)=>{
-        console.log(e)
-    })
+    // const { isPending, error, data } = useQuery({
+    //     queryKey: ['repoData'],
+    //     queryFn: () =>
+    //         org.organization.getMemberships().then((res) =>
+    //           res,
+    //         ),
+    // })
+    // if(isPending) return <><Loader/></>;
+    // data?.data.map((e)=>{
+    //     console.log(e)
+    // })
 
     // if(isPending) return <Loader/>;
 
