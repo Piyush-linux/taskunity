@@ -1,10 +1,11 @@
 import TaskItem from "./taskItem";
 import { TodosService } from "@/lib/services";
+import { currentUser } from '@clerk/nextjs/server';
 
 export default async function TaskList() {
-  let user = {id:"123"}
-  const todos = await TodosService.getTodos(user?._id ?? "");
-
+  let user = await currentUser();
+  const todos = await TodosService.getTodos(user?.id ?? "");
+  // console.log(user)
 //   const todos = await TodosService.getTodos(user.id);
     // console.log("\n --- TODO ---\n"+todos)
   return (
