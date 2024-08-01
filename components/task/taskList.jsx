@@ -2,8 +2,9 @@ import TaskItem from "./taskItem";
 import { TodosService } from "@/lib/services";
 
 export default async function TaskList() {
-  let user = { id: "123" };
+  let user = {id:"123"}
   const todos = await TodosService.getTodos(user?._id ?? "");
+
 //   const todos = await TodosService.getTodos(user.id);
     // console.log("\n --- TODO ---\n"+todos)
   return (
@@ -34,6 +35,7 @@ export default async function TaskList() {
             })}  
           </tbody>
         </table>
+
       </div>
     </>
   );

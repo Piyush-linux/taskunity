@@ -1,12 +1,18 @@
 "use client"
-import { SignOutButton, useOrganization } from "@clerk/nextjs";
-import { useUser } from "@clerk/nextjs";
+// import {
+//   ClerkLoading,
+//   ClerkProvider,
+//   ,
+//   UserButton,
+// } from "@clerk/nextjs"
+
+import { SignOutButton, OrganizationSwitcher } from "@clerk/nextjs";
 import { useModalStore } from "@/store/useModalStore";
 
 export default function Navbar(props) {
-
+   
     const { update } = useModalStore();
-
+   
     // let gotoProfile = ()=>{
 
     // }
@@ -21,12 +27,17 @@ export default function Navbar(props) {
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                     <div className="sm:flex sm:items-center sm:justify-between">
                         <div className="text-center sm:text-left cursor-pointer">
-                            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, {props.user} !</h1>
+
+                            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl flex items-center space-x-3">
+                            <img src="/logo.png" className="w-14" />
+                            <span>Welcome Back, {props.user} !</span> 
+                            </h1>
 
                             <p className="mt-1.5 text-sm text-gray-500">Let's Create a new Task ! 🎉</p>
                         </div>
 
                         <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+                        <OrganizationSwitcher/>
                         <SignOutButton>
                             <button
                                 className="text-sm font-medium inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"

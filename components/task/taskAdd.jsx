@@ -1,5 +1,5 @@
 "use client"
-
+import { SignOutButton, useOrganization, useUser } from "@clerk/nextjs";
 import { TodosService } from "@/lib/services";
 import { useModalStore } from "@/store/useModalStore";
 // import useTaskStore from "@/store/useTaskStore";
@@ -7,14 +7,23 @@ import { useState } from "react";
 // import { useOrganization } from "@clerk/nextjs";
 // import useUserStore from "@/store/useUserStore";
 
-
 export default function TaskAdd() {
     // const {} = TodosService
     const { modal, update } = useModalStore();
-    
+    const { user } = useUser()
     // const { addTask } = useTaskStore(); 
     const [todo,setTodo] = useState('');
     const [userId,setUserId] = useState('');
+
+   const { isLoaded, memberships } = useOrganization({
+        memberships: {
+        pageSize: 5,
+        keepPreviousData: true,
+    }})
+     if (!isLoaded) {
+    return <>Loading</>
+  }
+
     
     // const { users, setUser, fetchUser } = useUserStore();
     let handleAddTodo = async () => {
@@ -65,10 +74,7 @@ export default function TaskAdd() {
                             <input type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 p-3" placeholder='task' onChange={(e)=>setTodo(e.target.value)} value={todo} />
                             {/* <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='ID' onChange={(e)=>setUserId(e.target.value)} value={userId}  /> */}
                             <select name="" id="" className="w-fit bg-white text-rose-400 p-3 rounded-lg" defaultValue="Select User">
-                                <option value="000">Select User</option>
-                                <option value="123">Eren</option>
-                                <option value="777">Mikasa</option>
-                                <option value="1313">Levi</option>
+                                {memberships?.data?.map((mem) => (<option key={mem.id} value={mem.publicUserData.userId}>  {mem.publicUserData.userId} </option>))}
                             </select>
                             <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTodo}>send</button>
 
@@ -76,6 +82,10 @@ export default function TaskAdd() {
                     </div>
                 </div>
             </div>
+
+            {/* table */}
+
+            
         </>
     )
 }
