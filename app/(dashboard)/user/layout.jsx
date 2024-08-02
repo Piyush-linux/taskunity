@@ -1,4 +1,4 @@
-import Navbar from '@/components/admin/Navbar';
+import Navbar from '@/components/user/Navbar';
 import { currentUser } from '@clerk/nextjs/server';
 
 export default async function Layout({ children }) {

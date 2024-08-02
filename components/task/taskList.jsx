@@ -1,6 +1,7 @@
+import { currentUser } from "@clerk/nextjs/server";
 import TaskItem from "./taskItem";
 import { TodosService } from "@/lib/services";
-import { currentUser } from '@clerk/nextjs/server';
+// import { currentUser } from '@clerk/nextjs/server';
 
 export default async function TaskList() {
   let user = await currentUser();
@@ -23,8 +24,11 @@ export default async function TaskList() {
               <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">
                 User
               </td>
-              <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">
+              <td className="whitespace-normal text-center py-4 text-sm font-medium text-gray-500 sm:px-6">
                 Status
+              </td>
+              <td className="whitespace-normal text-center py-4 text-sm font-medium text-gray-500 sm:px-6">
+                Action
               </td>
             </tr>
           </thead>

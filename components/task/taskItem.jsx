@@ -1,4 +1,8 @@
+"use client"
 export default function TaskItem(props) {
+    let handleUpdate = () => {
+        console.log("Hello jiiiii")
+    }
     return (
         <>
             <tr className="">
@@ -10,14 +14,19 @@ export default function TaskItem(props) {
                     
                 </td>
                 <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
-                    07 February, 2022
+                   Kevin
                 </td>
 
                 <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
-                    <div className="items-center rounded-full bg-white py-2 px-3 text-xs font-extrabold text-rose-400">
+                    <div className="rounded-full text-center bg-white py-2 px-3 text-xs font-extrabold text-rose-400">
                         {(props.status)? "Completed" : "Pending" }
                     </div>
-                    {/* <input type="checkbox" className={``}  /> */}
+                </td>
+
+                <td className="whitespace-no-wrap text-center hidden py-4 text-sm font-normal sm:px-6 lg:table-cell">
+                    <div className="w-full flex items-center justify-center">
+                        <button onClick={ () => handleUpdate() } className="bg-rose-400 text-white p-3 rounded-lg font-bold">Edit</button>
+                    </div>
                 </td>
             </tr>
         </>

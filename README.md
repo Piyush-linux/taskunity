@@ -50,9 +50,11 @@ npm run dev
 - [x] [Loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) 
 - [ ] React/NextConcepts : Context API, memo, hooks
 - [x] Task CRUD API 
-- [ ] Clerk Organization Invitation
+- [x] Clerk Organization Invitation
 - [ ] React-Query
     - [ ] Sample PJ
+- [ ] Update Task
+- [ ] Schema : add (mail)
 
 # QnA
 1. Clerk Role Assign meta Data : role-( Admin / User ) 
