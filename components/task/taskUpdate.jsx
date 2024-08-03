@@ -1,57 +1,36 @@
 "use client"
-import { SignOutButton, useOrganization, useUser } from "@clerk/nextjs";
-import { TodosService } from "@/lib/services";
+// import { TodosService } from "@/lib/services";
 import { useModalStore } from "@/store/useModalStore";
-// import useTaskStore from "@/store/useTaskStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../ui/loader";
-// import { useOrganization } from "@clerk/nextjs";
-// import useUserStore from "@/store/useUserStore";
 
-export default function TaskAdd() {
-    // const {} = TodosService
-    const { modal, update } = useModalStore();
-    const { user } = useUser()
-    // const { addTask } = useTaskStore(); 
-    const [todo, setTodo] = useState('');
-    const [userId, setUserId] = useState('Select User');
-
-    const { isLoaded, memberships } = useOrganization({
-        memberships: {
-            pageSize: 5,
-            keepPreviousData: true,
-        }
-    })
-    if (!isLoaded) {
-        return <><Loader/></>
-    }
-
-
-    // const { users, setUser, fetchUser } = useUserStore();
-    let handleAddTodo = async () => {
-        console.log("handle form ...");
-        // console.log(`ID : ${userId} \nTodo: ${todo} \nStatus: false`)
-        let data = await TodosService.addTodo({ userId: userId, todo: todo, status: false });
-        console.log(data);
-        // await TodosService.addTodo({userId: '2323', todo: 'todo', status: false});
-        // console.log(todo)
-
+export default function TaskUpdate() {
+    const { putModal, updateModal, putTodo , updatePutTodo } = useModalStore();
+    // console.log(putTodo)
+    // Todo, UserId, Status
+    const [userId, setUserId] = "2323";
+    const [todo, setTodo] = useState(putTodo.todo);
+    const [status, setStatus] = useState(false);
+    
+    // let handleUpdateTodo = async () => {putTodo
+    let handleUpdateTodo = () => {
+        console.log(`handle form ... \nUserId: ${userId} \ntodo: ${todo} \nStatus: ${status}`);
         // Clear Text
-        update('hidden');
-        setTodo('');
-        setUserId('');
+        // updateModal('hidden');
+        // setPutTodo('');
+        // setUserId('');
     }
 
     return (
         <>
             <div
                 id="modelConfirm"
-                className={`${modal} fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 `}
+                className={`${putModal} fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 `}
             >
                 <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-4xl">
                     <div className="flex justify-end p-2">
                         <button
-                            onClick={() => update('hidden')}
+                            onClick={() => updateModal('hidden')}
                             type="button"
                             className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                         >
@@ -72,27 +51,21 @@ export default function TaskAdd() {
 
                     </div>
                     <div className="p-6 pt-0 text-center">
-
                         <h3 className="flex mt-5 mb-6 space-x-3">
 
-                            <input name="todo" type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 p-3" placeholder='task' onChange={(e) => setTodo(e.target.value)} value={todo} />
-                            {/* <input type="email" className="w-full border-2 p-3 rounded-lg" placeholder='ID' onChange={(e)=>setUserId(e.target.value)} value={userId}  /> */}
-                            <select name="userId" id="" className="w-fit bg-white text-rose-400 p-3 rounded-lg"  onChange={(e) => {
+                            <input name="todo" type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 p-3" placeholder="Task Update" onChange={(e) => updatePutTodo({todo: e.target.value, status: false})} value={putTodo.todo} />
+                            {/* <select name="userId" id="" className="w-fit bg-white text-rose-400 p-3 rounded-lg"  onChange={(e) => {
                                 setUserId(e.target.value);
                             }}>
                                 <option value={userId} defaultValue>  Select User </option>
                                 {memberships?.data?.map((mem) => (<option key={mem.id} value={mem.publicUserData.userId}>  {mem.publicUserData.identifier} </option>))}
-                            </select>
-                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleAddTodo}>send</button>
+                            </select> */}
+                            <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleUpdateTodo}>send</button>
 
                         </h3>
                     </div>
                 </div>
             </div>
-
-            {/* table */}
-
-
         </>
     )
 }

@@ -1,18 +1,13 @@
 "use client"
-import { SignOutButton, useOrganization, useUser } from "@clerk/nextjs";
+import { useOrganization, useUser } from "@clerk/nextjs";
 import { TodosService } from "@/lib/services";
 import { useModalStore } from "@/store/useModalStore";
-// import useTaskStore from "@/store/useTaskStore";
 import { useState } from "react";
 import Loader from "../ui/loader";
-// import { useOrganization } from "@clerk/nextjs";
-// import useUserStore from "@/store/useUserStore";
 
 export default function TaskAdd() {
-    // const {} = TodosService
     const { modal, update } = useModalStore();
     const { user } = useUser()
-    // const { addTask } = useTaskStore(); 
     const [todo, setTodo] = useState('');
     const [userId, setUserId] = useState('Select User');
 
@@ -26,8 +21,6 @@ export default function TaskAdd() {
         return <><Loader/></>
     }
 
-
-    // const { users, setUser, fetchUser } = useUserStore();
     let handleAddTodo = async () => {
         console.log("handle form ...");
         // console.log(`ID : ${userId} \nTodo: ${todo} \nStatus: false`)

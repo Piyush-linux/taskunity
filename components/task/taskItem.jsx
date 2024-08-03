@@ -1,7 +1,15 @@
 "use client"
+
+import { useModalStore } from "@/store/useModalStore";
+import TaskUpdate from "./taskUpdate";
+
 export default function TaskItem(props) {
+    const { putModal, updateModal, putTodo ,updatePutTodo } = useModalStore();
     let handleUpdate = () => {
-        console.log("Hello jiiiii")
+        updatePutTodo({todo: props.todo, status:props.status})
+        console.log(putTodo)
+        updateModal('block')
+        // console.log(putTodo)
     }
     return (
         <>
@@ -29,6 +37,8 @@ export default function TaskItem(props) {
                     </div>
                 </td>
             </tr>
+            
+
         </>
     )
 }

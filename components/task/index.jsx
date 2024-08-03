@@ -2,6 +2,7 @@
 // import { useQuery } from "@tanstack/react-query";
 import TaskAdd from "./taskAdd";
 import TaskList from "./taskList";
+import TaskUpdate from "./taskUpdate";
 // import { getMemebers } from '@/lib/actions';
 // import { useOrganization } from "@clerk/nextjs";
 // import Loader from "../ui/loader";
@@ -62,6 +63,7 @@ export default function Task() {
                         {/* Table */}
                         <TaskList/>
                         <TaskAdd/>
+                        <TaskUpdate/>
                     </div>
                 </div>
             </div>
