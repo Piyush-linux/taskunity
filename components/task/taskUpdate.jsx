@@ -1,20 +1,22 @@
-"use client"
+"use client" 
 // import { TodosService } from "@/lib/services";
 import { useModalStore } from "@/store/useModalStore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { TodosService } from "@/lib/services";
 import Loader from "../ui/loader";
 
 export default function TaskUpdate() {
     const { putModal, updateModal, putTodo , updatePutTodo } = useModalStore();
-    // console.log(putTodo)
+
     // Todo, UserId, Status
-    const [userId, setUserId] = "2323";
+    const [userId, setUserId] = useState(putTodo.userId);
     const [todo, setTodo] = useState(putTodo.todo);
-    const [status, setStatus] = useState(false);
+    const [status, setStatus] = useState(putTodo.status);
     
-    // let handleUpdateTodo = async () => {putTodo
-    let handleUpdateTodo = () => {
-        console.log(`handle form ... \nUserId: ${userId} \ntodo: ${todo} \nStatus: ${status}`);
+    let handleUpdateTodo = async () => {
+        // console.log(`handle form ... \nUserId: ${putTodo.userId} \ntodo: ${putTodo.todo} \nStatus: ${putTodo.todo}`);
+        let data = await TodosService.updateTodo({ userId: userId, todo: todo, status: status });
+
         // Clear Text
         // updateModal('hidden');
         // setPutTodo('');
@@ -52,14 +54,9 @@ export default function TaskUpdate() {
                     </div>
                     <div className="p-6 pt-0 text-center">
                         <h3 className="flex mt-5 mb-6 space-x-3">
-
-                            <input name="todo" type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 p-3" placeholder="Task Update" onChange={(e) => updatePutTodo({todo: e.target.value, status: false})} value={putTodo.todo} />
-                            {/* <select name="userId" id="" className="w-fit bg-white text-rose-400 p-3 rounded-lg"  onChange={(e) => {
-                                setUserId(e.target.value);
-                            }}>
-                                <option value={userId} defaultValue>  Select User </option>
-                                {memberships?.data?.map((mem) => (<option key={mem.id} value={mem.publicUserData.userId}>  {mem.publicUserData.identifier} </option>))}
-                            </select> */}
+                            <input name="status" type="checkbox" className="w-10 border-2 border-rose-400 text-rose-300" onClick={()=> setStatus(!status)} />
+                            <input name="todo" type="text" className="w-full border-t-white border-l-white border-r-white border-b-2 outline-none border-2 border-b-rose-400 pb-1" placeholder="Task Update" onChange={(e) => updatePutTodo({todo: e.target.value, status: false})} value={putTodo.todo} />
+                           
                             <button className='w-fit p-3 bg-rose-400 text-white rounded-lg' onClick={handleUpdateTodo}>send</button>
 
                         </h3>

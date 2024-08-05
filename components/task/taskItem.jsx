@@ -1,13 +1,13 @@
 "use client"
-
+ 
 import { useModalStore } from "@/store/useModalStore";
 import TaskUpdate from "./taskUpdate";
 
 export default function TaskItem(props) {
     const { putModal, updateModal, putTodo ,updatePutTodo } = useModalStore();
     let handleUpdate = () => {
-        updatePutTodo({todo: props.todo, status:props.status})
-        console.log(putTodo)
+        updatePutTodo({userId: props.userId, todo: props.todo, status:props.status})
+        // console.log(props.userId)
         updateModal('block')
         // console.log(putTodo)
     }

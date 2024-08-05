@@ -2,7 +2,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import TaskItem from "./taskItem";
 import { TodosService } from "@/lib/services";
 // import { currentUser } from '@clerk/nextjs/server';
-
+ 
 export default async function TaskList() {
   let user = await currentUser();
   const todos = await TodosService.getTodos(user?.id ?? "");
@@ -35,7 +35,7 @@ export default async function TaskList() {
           <tbody className="lg:border-gray-300">
              {todos.map((itm) => {
               return (
-                <TaskItem key={itm._id} todo={itm.todo} status={itm.status} />
+                <TaskItem key={itm._id} userId={user.id} todo={itm.todo} status={itm.status} />
               );
             })}  
           </tbody>
