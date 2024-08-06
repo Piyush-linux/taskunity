@@ -17,8 +17,21 @@ export async function GET(request, { params }) {
   }
 };
 
+export async function PUT(request, { params }) {
+  const { slug } = params;
+  let data = await request.json()
+  try {
+    connectToDb();
+    const task = await Task.findOneAndUpdate({userId:slug},data);
+    // const task = await Task.findOne();
+    return NextResponse.json(slug);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch post!");
+  }
+};
 
-
+ 
 export async function DELETE(request, { params }) {
   // If there is no signed in user, this will return a 404 error
   // auth().protect();

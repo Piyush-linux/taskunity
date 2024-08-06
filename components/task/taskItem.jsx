@@ -1,7 +1,6 @@
 "use client"
  
 import { useModalStore } from "@/store/useModalStore";
-import TaskUpdate from "./taskUpdate";
 
 export default function TaskItem(props) {
     const { putModal, updateModal, putTodo ,updatePutTodo } = useModalStore();
@@ -26,8 +25,8 @@ export default function TaskItem(props) {
                 </td>
 
                 <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
-                    <div className="rounded-full text-center bg-white py-2 px-3 text-xs font-extrabold text-rose-400">
-                        {(props.status)? "Completed" : "Pending" }
+                    <div className="rounded-full text-center bg-white py-2 px-3 text-xs font-extrabold ">
+                        {(props.status)? <span className="text-emerald-500"> Completed </span> : <span className="text-rose-400"> Pending </span>}
                     </div>
                 </td>
 
